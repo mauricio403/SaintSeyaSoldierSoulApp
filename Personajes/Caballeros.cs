@@ -2,12 +2,12 @@
 
 namespace Personajes
 {
-    public class Caballeros
+    public class Caballero
     {
         public String Nombre { get; set; }
         public string Tecnica { get; set; }
 
-        public Caballeros(String nombre, String tecnica)
+        public Caballero(String nombre, String tecnica)
         {
             Nombre = nombre;
             Tecnica = tecnica;

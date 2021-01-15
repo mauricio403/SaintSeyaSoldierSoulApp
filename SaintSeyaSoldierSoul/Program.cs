@@ -4,6 +4,7 @@ using Negocio;
 using Personajes;
 using Interfaces;
 using Ataques;
+using NinjectFramework;
 namespace SaintSeyaSoldierSoul
 {
     class Program
@@ -11,12 +12,20 @@ namespace SaintSeyaSoldierSoul
         static void Main(string[] args)
         {
             var opcion = 0;
+            var fr = new NinjectFr();
+            fr.Load();
 
-            var kernel = new StandardKernel();
+            var kernel = new StandardKernel(fr);
+
+            
+            var ataqueJugador = kernel.Get<Game>();
+
 
             while (opcion != 5)
             {
                 Console.WriteLine("Ejercicio de Inyeccion de dependencias con Ninjectic");
+
+
                 Console.WriteLine("Elije un personaje");
 
                 Console.WriteLine("1) Mu de Aries");
@@ -24,54 +33,63 @@ namespace SaintSeyaSoldierSoul
                 Console.WriteLine("3) Saga de Géminis");
                 Console.WriteLine("4) Máscara de muerte de Cáncer");
                 Console.WriteLine("5) Camus de Acuario");
-              
+
                 opcion = int.Parse(Console.ReadLine());
 
                 switch (opcion)
                 {
                     case 1:
                         Console.WriteLine("Haz elejido al caballero Mu de Aries");
-                        Caballeros Mu = new Caballeros("Mu de Aries", "Revolucion Estelar");
-                        kernel.Bind<ITecnica>().To<Tecnicas>();
-                        var ataquePrimerJugador = kernel.Get<Game>();
 
-                        ataquePrimerJugador.HacerLaTecnica(Mu);
+                        Caballero mu = new Caballero("Mu de Aries", "Revolucion Estelar");
+                        
+
+                        ataqueJugador.HacerLaTecnica(mu);
                         break;
+
+
                     case 2:
                         Console.WriteLine("Haz elejido al caballero Shura de Capricornio");
-                        Caballeros Shura = new Caballeros("Shura de Capricornio", "Espada Sagrada Exclaibur");
-                        kernel.Bind<ITecnica>().To<Tecnicas>();
-                        var ataqueSegundoJugador = kernel.Get<Game>();
+                        Caballero shura = new Caballero("Shura de Capricornio", "Espada Sagrada Excalibur");
 
-                        ataqueSegundoJugador.HacerLaTecnica(Shura);
+                        
+
+                        ataqueJugador.HacerLaTecnica(shura);
                         break;
+
+
                     case 3:
                         Console.WriteLine("Haz elejido al caballero Saga de Géminis");
-                        Caballeros Saga = new Caballeros("Saga de Géminis", "Explosion de Galaxias");
-                        kernel.Bind<ITecnica>().To<Tecnicas>();
-                        var ataqueTercerJugador = kernel.Get<Game>();
+                        Caballero saga = new Caballero("Saga de Géminis", "Explosion de Galaxias");
 
-                        ataqueTercerJugador.HacerLaTecnica(Saga);
+                        
+
+                        ataqueJugador.HacerLaTecnica(saga);
                         break;
+
+
                     case 4:
                         Console.WriteLine("Haz elejido al caballero Mascara de muerte de Cancer");
-                        Caballeros DeadthMask = new Caballeros("Mascara de muerte de Cancer", "Ondas Infernales");
-                        kernel.Bind<ITecnica>().To<Tecnicas>();
-                        var ataqueCuartoJugador = kernel.Get<Game>();
+                        Caballero deadthMask = new Caballero("Mascara de muerte de Cancer", "Ondas Infernales");
 
-                        ataqueCuartoJugador.HacerLaTecnica(DeadthMask);
+                        
+
+                        ataqueJugador.HacerLaTecnica(deadthMask);
                         break;
+
+
                     case 5:
                         Console.WriteLine("Haz elejido al caballero Camus de Acuario");
-                        Caballeros Camus = new Caballeros("Camus de Acuario", "Ejecución de Aurora");
-                        kernel.Bind<ITecnica>().To<Tecnicas>();
-                        var ataqueQuintoJugador = kernel.Get<Game>();
+                        Caballero camus = new Caballero("Camus de Acuario", "Ejecución de Aurora");
+                        
 
-                        ataqueQuintoJugador.HacerLaTecnica(Camus);
+                        
+
+                        ataqueJugador.HacerLaTecnica(camus);
                         break;
                 }
             }
-           
+
         }
     }
 }

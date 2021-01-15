@@ -12,7 +12,7 @@ namespace Negocio
             this.tecnica = tecnica;
         }
 
-        public void HacerLaTecnica(Caballeros personaje)
+        public void HacerLaTecnica(Caballero personaje)
         {
             tecnica.Atacar(personaje);
             

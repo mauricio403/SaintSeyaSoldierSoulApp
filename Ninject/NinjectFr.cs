@@ -1,14 +1,16 @@
 ﻿using System;
 using Ninject;
 using Ninject.Modules;
+using Interfaces;
+using Ataques;
 
-namespace NinjectFr
+namespace NinjectFramework
 {
     public class NinjectFr : NinjectModule
     {
         public override void Load()
         {
-            //throw new NotImplementedException();
+            this.Bind<ITecnica>().To<Tecnica>();
         }
     }
 }

@@ -4,16 +4,12 @@ using Interfaces;
 
 namespace Ataques
 {
-    public class Tecnicas: ITecnica 
+    public class Tecnica : ITecnica
     {
-        
-
-        public bool Atacar(Caballeros personaje)
+        public bool Atacar(Caballero personaje)
         {
-            Console.WriteLine("El personaje {0}, ha realizado la tenica {1}", personaje.Nombre, personaje.Tecnica);
+            Console.WriteLine("El personaje {0}, ha realizado la tecnica {1}", personaje.Nombre, personaje.Tecnica);
             return true;
         }
-      
-        
     }
 }
